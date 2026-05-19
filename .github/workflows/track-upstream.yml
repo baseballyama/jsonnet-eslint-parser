@@ -21,6 +21,11 @@ on:
     # the dashboard does not get hit at the exact same minute).
     - cron: "30 9 * * 1"
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-attempt the bump even if a closed PR for the latest version already exists."
+        type: boolean
+        default: false
 
 concurrency:
   # Only one upstream sync at a time across the whole repo so two cron
@@ -41,6 +46,9 @@ jobs:
       current: ${{ steps.current.outputs.version }}
       latest: ${{ steps.latest.outputs.version }}
       needs_bump: ${{ steps.compare.outputs.needs_bump }}
+      skip_reason: ${{ steps.pr_state.outputs.skip_reason }}
+      existing_open_pr: ${{ steps.pr_state.outputs.existing_open_pr }}
+      stale_open_prs: ${{ steps.pr_state.outputs.stale_open_prs }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -85,10 +93,79 @@ jobs:
             echo "needs_bump=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Inspect existing bump PRs
+        id: pr_state
+        if: steps.compare.outputs.needs_bump == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          LATEST: ${{ steps.latest.outputs.version }}
+          FORCE: ${{ github.event.inputs.force }}
+        run: |
+          set -euo pipefail
+
+          # We use a stable branch name (`upstream/go-jsonnet-<version>`)
+          # so prior runs for the same version can be detected by their
+          # head ref. Older bump PRs for *different* versions are
+          # detected by branch prefix below.
+          target_branch="upstream/go-jsonnet-${LATEST}"
+
+          # 1. Is there an open PR already targeting this exact version?
+          #    peter-evans/create-pull-request will update it in place;
+          #    we only need to expose the number for the bump job's PR
+          #    body and for the stale-PR step to skip it.
+          existing_open=$(gh pr list --repo "$REPO" \
+            --state open \
+            --head "$target_branch" \
+            --limit 5 \
+            --json number \
+            --jq '.[0].number // empty')
+
+          # 2. Was a PR for this version closed without merging? Respect
+          #    that signal — the maintainer decided not to take this
+          #    bump. Override only when `workflow_dispatch.force == true`.
+          closed_unmerged=$(gh pr list --repo "$REPO" \
+            --state closed \
+            --head "$target_branch" \
+            --limit 5 \
+            --json number,mergedAt \
+            --jq '[.[] | select(.mergedAt == null) | .number] | .[0] // empty')
+
+          skip_reason=""
+          if [ -n "$closed_unmerged" ] && [ "$FORCE" != "true" ]; then
+            skip_reason="A previous PR (#${closed_unmerged}) for ${LATEST} was closed without merging. Re-run with workflow_dispatch and force=true to retry."
+          fi
+
+          # 3. List open bump PRs for *other* versions so the bump job
+          #    can supersede them. The branch prefix is the contract;
+          #    `--limit 100` covers the worst case of a long backlog of
+          #    unmerged bumps far better than the default of 30.
+          stale=$(gh pr list --repo "$REPO" \
+            --state open \
+            --limit 100 \
+            --json number,headRefName \
+            --jq "[.[] | select(.headRefName | startswith(\"upstream/go-jsonnet-\")) | select(.headRefName != \"$target_branch\") | .number | tostring] | join(\",\")")
+
+          {
+            echo "existing_open_pr=$existing_open"
+            echo "stale_open_prs=$stale"
+            echo "skip_reason=$skip_reason"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Target branch:           $target_branch"
+          echo "Existing open same-ver:  ${existing_open:-<none>}"
+          echo "Closed-unmerged same-ver:${closed_unmerged:-<none>}"
+          echo "Stale open other-ver:    ${stale:-<none>}"
+          echo "Skip reason:             ${skip_reason:-<none>}"
+
   bump:
     name: Bump and verify
     needs: check
-    if: needs.check.outputs.needs_bump == 'true'
+    # Skip entirely when a previous PR for this exact version was
+    # closed-unmerged (unless the operator passed force=true). Without
+    # this guard peter-evans would open a brand-new PR every Monday and
+    # pester the maintainer to re-decide.
+    if: needs.check.outputs.needs_bump == 'true' && needs.check.outputs.skip_reason == ''
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -152,6 +229,7 @@ jobs:
           EOF
 
       - name: Open or refresh pull request
+        id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -214,6 +292,54 @@ jobs:
                   that needs a TypeScript surface.
 
             <!-- pr-template:end -->
+
+      - name: Supersede older bump PRs
+        # Close any other still-open `upstream/go-jsonnet-*` PRs. Their
+        # branches will be older versions that this PR now covers, so
+        # leaving them open just creates review noise.
+        if: |
+          steps.cpr.outputs.pull-request-number != '' &&
+          needs.check.outputs.stale_open_prs != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NEW_PR: ${{ steps.cpr.outputs.pull-request-number }}
+          STALE: ${{ needs.check.outputs.stale_open_prs }}
+          LATEST: ${{ needs.check.outputs.latest }}
+        run: |
+          set -euo pipefail
+          IFS=',' read -ra prs <<< "$STALE"
+          for pr in "${prs[@]}"; do
+            [ -z "$pr" ] && continue
+            echo "Closing stale bump PR #$pr (superseded by #$NEW_PR / ${LATEST})"
+            gh pr close "$pr" --repo "$REPO" \
+              --comment "Superseded by #${NEW_PR}, which bumps \`google/go-jsonnet\` to \`${LATEST}\`. Closing this older bump PR — re-open if there is a reason to ship this version specifically." \
+              --delete-branch
+          done
+
+  notify-skip:
+    name: Note that bump was skipped
+    needs: check
+    # Surface the skip reason in the workflow summary so an operator
+    # who triggered this manually can see what happened without diving
+    # into job logs. We do not open an issue here — the closed PR
+    # already exists and re-pinging it is just noise.
+    if: needs.check.outputs.needs_bump == 'true' && needs.check.outputs.skip_reason != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write summary
+        env:
+          REASON: ${{ needs.check.outputs.skip_reason }}
+          CURRENT: ${{ needs.check.outputs.current }}
+          LATEST: ${{ needs.check.outputs.latest }}
+        run: |
+          {
+            echo "## Upstream bump skipped"
+            echo
+            echo "- Pinned:   \`${CURRENT}\`"
+            echo "- Upstream: \`${LATEST}\`"
+            echo "- Reason:   ${REASON}"
+          } >> "$GITHUB_STEP_SUMMARY"
 
   fallback-issue:
     name: Open tracking issue on failure

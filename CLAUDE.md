@@ -79,6 +79,19 @@ wasm, regenerates fixtures, runs `pnpm test:all`, and opens (or refreshes)
 a pull request. If the rebuild or tests fail (e.g. an upstream API change
 broke `wasm/main.go`), it opens a tracking issue instead.
 
+Existing-PR handling:
+
+- **Open PR for the same version**: peter-evans force-pushes new commits
+  to the existing `upstream/go-jsonnet-<version>` branch and updates the
+  PR in place. No duplicates.
+- **Closed-unmerged PR for the same version**: the workflow assumes the
+  maintainer declined this bump and skips. The skip reason lands in the
+  run summary. Override with `workflow_dispatch` and `force: true`.
+- **Open PR for an older version still around**: when a newer bump opens
+  successfully, the workflow closes the older bump PR with a
+  "Superseded by #N" comment and deletes its branch, so there is at most
+  one upstream-bump PR open at a time.
+
 For the workflow to be able to open pull requests, the repository setting
 **Settings → Actions → General → Workflow permissions → Allow GitHub
 Actions to create and approve pull requests** must be enabled. Without it
