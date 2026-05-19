@@ -1,0 +1,859 @@
+{
+  "type": "Program",
+  "range": [
+    0,
+    97
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 8,
+      "column": 0
+    }
+  },
+  "body": [
+    {
+      "type": "Object",
+      "closeFodder": [
+        {
+          "blanks": 0,
+          "comment": [],
+          "indent": 0,
+          "kind": 0
+        }
+      ],
+      "fields": [
+        {
+          "commaFodder": [],
+          "expr1": null,
+          "expr2": {
+            "type": "LiteralNumber",
+            "loc": {
+              "end": {
+                "column": 6,
+                "line": 2
+              },
+              "start": {
+                "column": 5,
+                "line": 2
+              }
+            },
+            "originalString": "1",
+            "range": [
+              7,
+              8
+            ]
+          },
+          "expr3": null,
+          "fodder1": [
+            {
+              "blanks": 0,
+              "comment": [],
+              "indent": 2,
+              "kind": 0
+            }
+          ],
+          "fodder2": [],
+          "hide": 1,
+          "id": "a",
+          "kind": 1,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        },
+        {
+          "commaFodder": [],
+          "expr1": {
+            "type": "LiteralString",
+            "blockIndent": "",
+            "blockTermIndent": "",
+            "kind": 1,
+            "loc": {
+              "end": {
+                "column": 5,
+                "line": 3
+              },
+              "start": {
+                "column": 2,
+                "line": 3
+              }
+            },
+            "range": [
+              12,
+              15
+            ],
+            "value": "b"
+          },
+          "expr2": {
+            "type": "LiteralNumber",
+            "loc": {
+              "end": {
+                "column": 8,
+                "line": 3
+              },
+              "start": {
+                "column": 7,
+                "line": 3
+              }
+            },
+            "originalString": "2",
+            "range": [
+              17,
+              18
+            ]
+          },
+          "expr3": null,
+          "fodder1": [],
+          "fodder2": [],
+          "hide": 1,
+          "id": null,
+          "kind": 3,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        },
+        {
+          "commaFodder": [],
+          "expr1": {
+            "type": "Conditional",
+            "branchFalse": {
+              "type": "LiteralString",
+              "blockIndent": "",
+              "blockTermIndent": "",
+              "kind": 1,
+              "loc": {
+                "end": {
+                  "column": 28,
+                  "line": 4
+                },
+                "start": {
+                  "column": 25,
+                  "line": 4
+                }
+              },
+              "range": [
+                45,
+                48
+              ],
+              "value": "d"
+            },
+            "branchTrue": {
+              "type": "LiteralString",
+              "blockIndent": "",
+              "blockTermIndent": "",
+              "kind": 1,
+              "loc": {
+                "end": {
+                  "column": 19,
+                  "line": 4
+                },
+                "start": {
+                  "column": 16,
+                  "line": 4
+                }
+              },
+              "range": [
+                36,
+                39
+              ],
+              "value": "c"
+            },
+            "cond": {
+              "type": "LiteralBoolean",
+              "loc": {
+                "end": {
+                  "column": 10,
+                  "line": 4
+                },
+                "start": {
+                  "column": 6,
+                  "line": 4
+                }
+              },
+              "range": [
+                26,
+                30
+              ],
+              "value": true
+            },
+            "elseFodder": [],
+            "loc": {
+              "end": {
+                "column": 28,
+                "line": 4
+              },
+              "start": {
+                "column": 3,
+                "line": 4
+              }
+            },
+            "range": [
+              23,
+              48
+            ],
+            "thenFodder": []
+          },
+          "expr2": {
+            "type": "LiteralNumber",
+            "loc": {
+              "end": {
+                "column": 32,
+                "line": 4
+              },
+              "start": {
+                "column": 31,
+                "line": 4
+              }
+            },
+            "originalString": "3",
+            "range": [
+              51,
+              52
+            ]
+          },
+          "expr3": null,
+          "fodder1": [
+            {
+              "blanks": 0,
+              "comment": [],
+              "indent": 2,
+              "kind": 0
+            }
+          ],
+          "fodder2": [],
+          "hide": 1,
+          "id": null,
+          "kind": 2,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        },
+        {
+          "commaFodder": [],
+          "expr1": null,
+          "expr2": {
+            "type": "LiteralString",
+            "blockIndent": "",
+            "blockTermIndent": "",
+            "kind": 1,
+            "loc": {
+              "end": {
+                "column": 17,
+                "line": 5
+              },
+              "start": {
+                "column": 11,
+                "line": 5
+              }
+            },
+            "range": [
+              65,
+              71
+            ],
+            "value": "hide"
+          },
+          "expr3": null,
+          "fodder1": [
+            {
+              "blanks": 0,
+              "comment": [],
+              "indent": 2,
+              "kind": 0
+            }
+          ],
+          "fodder2": [],
+          "hide": 0,
+          "id": "hidden",
+          "kind": 1,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        },
+        {
+          "commaFodder": [],
+          "expr1": null,
+          "expr2": {
+            "type": "LiteralString",
+            "blockIndent": "",
+            "blockTermIndent": "",
+            "kind": 1,
+            "loc": {
+              "end": {
+                "column": 20,
+                "line": 6
+              },
+              "start": {
+                "column": 13,
+                "line": 6
+              }
+            },
+            "range": [
+              86,
+              93
+            ],
+            "value": "force"
+          },
+          "expr3": null,
+          "fodder1": [
+            {
+              "blanks": 0,
+              "comment": [],
+              "indent": 2,
+              "kind": 0
+            }
+          ],
+          "fodder2": [],
+          "hide": 2,
+          "id": "visible",
+          "kind": 1,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        }
+      ],
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 7
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        96
+      ],
+      "trailingComma": true
+    }
+  ],
+  "tokens": [
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        1
+      ],
+      "type": "Punctuator",
+      "value": "{"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 3,
+          "line": 2
+        },
+        "start": {
+          "column": 2,
+          "line": 2
+        }
+      },
+      "range": [
+        4,
+        5
+      ],
+      "type": "Identifier",
+      "value": "a"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 4,
+          "line": 2
+        },
+        "start": {
+          "column": 3,
+          "line": 2
+        }
+      },
+      "range": [
+        5,
+        6
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 6,
+          "line": 2
+        },
+        "start": {
+          "column": 5,
+          "line": 2
+        }
+      },
+      "range": [
+        7,
+        8
+      ],
+      "type": "Numeric",
+      "value": "1"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 7,
+          "line": 2
+        },
+        "start": {
+          "column": 6,
+          "line": 2
+        }
+      },
+      "range": [
+        8,
+        9
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 5,
+          "line": 3
+        },
+        "start": {
+          "column": 2,
+          "line": 3
+        }
+      },
+      "range": [
+        12,
+        15
+      ],
+      "type": "String",
+      "value": "\"b\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 6,
+          "line": 3
+        },
+        "start": {
+          "column": 5,
+          "line": 3
+        }
+      },
+      "range": [
+        15,
+        16
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 8,
+          "line": 3
+        },
+        "start": {
+          "column": 7,
+          "line": 3
+        }
+      },
+      "range": [
+        17,
+        18
+      ],
+      "type": "Numeric",
+      "value": "2"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 9,
+          "line": 3
+        },
+        "start": {
+          "column": 8,
+          "line": 3
+        }
+      },
+      "range": [
+        18,
+        19
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 3,
+          "line": 4
+        },
+        "start": {
+          "column": 2,
+          "line": 4
+        }
+      },
+      "range": [
+        22,
+        23
+      ],
+      "type": "Punctuator",
+      "value": "["
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 5,
+          "line": 4
+        },
+        "start": {
+          "column": 3,
+          "line": 4
+        }
+      },
+      "range": [
+        23,
+        25
+      ],
+      "type": "Keyword",
+      "value": "if"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 4
+        },
+        "start": {
+          "column": 6,
+          "line": 4
+        }
+      },
+      "range": [
+        26,
+        30
+      ],
+      "type": "Keyword",
+      "value": "true"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 15,
+          "line": 4
+        },
+        "start": {
+          "column": 11,
+          "line": 4
+        }
+      },
+      "range": [
+        31,
+        35
+      ],
+      "type": "Keyword",
+      "value": "then"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 19,
+          "line": 4
+        },
+        "start": {
+          "column": 16,
+          "line": 4
+        }
+      },
+      "range": [
+        36,
+        39
+      ],
+      "type": "String",
+      "value": "\"c\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 24,
+          "line": 4
+        },
+        "start": {
+          "column": 20,
+          "line": 4
+        }
+      },
+      "range": [
+        40,
+        44
+      ],
+      "type": "Keyword",
+      "value": "else"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 28,
+          "line": 4
+        },
+        "start": {
+          "column": 25,
+          "line": 4
+        }
+      },
+      "range": [
+        45,
+        48
+      ],
+      "type": "String",
+      "value": "\"d\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 29,
+          "line": 4
+        },
+        "start": {
+          "column": 28,
+          "line": 4
+        }
+      },
+      "range": [
+        48,
+        49
+      ],
+      "type": "Punctuator",
+      "value": "]"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 30,
+          "line": 4
+        },
+        "start": {
+          "column": 29,
+          "line": 4
+        }
+      },
+      "range": [
+        49,
+        50
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 32,
+          "line": 4
+        },
+        "start": {
+          "column": 31,
+          "line": 4
+        }
+      },
+      "range": [
+        51,
+        52
+      ],
+      "type": "Numeric",
+      "value": "3"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 33,
+          "line": 4
+        },
+        "start": {
+          "column": 32,
+          "line": 4
+        }
+      },
+      "range": [
+        52,
+        53
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 8,
+          "line": 5
+        },
+        "start": {
+          "column": 2,
+          "line": 5
+        }
+      },
+      "range": [
+        56,
+        62
+      ],
+      "type": "Identifier",
+      "value": "hidden"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 5
+        },
+        "start": {
+          "column": 8,
+          "line": 5
+        }
+      },
+      "range": [
+        62,
+        64
+      ],
+      "type": "Operator",
+      "value": "::"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 17,
+          "line": 5
+        },
+        "start": {
+          "column": 11,
+          "line": 5
+        }
+      },
+      "range": [
+        65,
+        71
+      ],
+      "type": "String",
+      "value": "\"hide\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 18,
+          "line": 5
+        },
+        "start": {
+          "column": 17,
+          "line": 5
+        }
+      },
+      "range": [
+        71,
+        72
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 9,
+          "line": 6
+        },
+        "start": {
+          "column": 2,
+          "line": 6
+        }
+      },
+      "range": [
+        75,
+        82
+      ],
+      "type": "Identifier",
+      "value": "visible"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 12,
+          "line": 6
+        },
+        "start": {
+          "column": 9,
+          "line": 6
+        }
+      },
+      "range": [
+        82,
+        85
+      ],
+      "type": "Operator",
+      "value": ":::"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 20,
+          "line": 6
+        },
+        "start": {
+          "column": 13,
+          "line": 6
+        }
+      },
+      "range": [
+        86,
+        93
+      ],
+      "type": "String",
+      "value": "\"force\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 21,
+          "line": 6
+        },
+        "start": {
+          "column": 20,
+          "line": 6
+        }
+      },
+      "range": [
+        93,
+        94
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 7
+        },
+        "start": {
+          "column": 0,
+          "line": 7
+        }
+      },
+      "range": [
+        95,
+        96
+      ],
+      "type": "Punctuator",
+      "value": "}"
+    }
+  ],
+  "comments": []
+}

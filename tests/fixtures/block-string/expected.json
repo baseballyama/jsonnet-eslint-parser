@@ -1,0 +1,446 @@
+{
+  "type": "Program",
+  "range": [
+    0,
+    93
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 0
+    }
+  },
+  "body": [
+    {
+      "type": "Local",
+      "binds": [
+        {
+          "body": {
+            "type": "LiteralString",
+            "blockIndent": "  ",
+            "blockTermIndent": "",
+            "kind": 2,
+            "loc": {
+              "end": {
+                "column": 3,
+                "line": 4
+              },
+              "start": {
+                "column": 17,
+                "line": 1
+              }
+            },
+            "range": [
+              17,
+              40
+            ],
+            "value": "hello\nworld\n"
+          },
+          "closeFodder": [],
+          "eqFodder": [],
+          "fun": null,
+          "varFodder": [],
+          "variable": "greeting"
+        }
+      ],
+      "body": {
+        "type": "Object",
+        "closeFodder": [
+          {
+            "blanks": 0,
+            "comment": [],
+            "indent": 0,
+            "kind": 0
+          }
+        ],
+        "fields": [
+          {
+            "commaFodder": [],
+            "expr1": null,
+            "expr2": {
+              "type": "Var",
+              "id": "greeting",
+              "loc": {
+                "end": {
+                  "column": 15,
+                  "line": 6
+                },
+                "start": {
+                  "column": 7,
+                  "line": 6
+                }
+              },
+              "range": [
+                51,
+                59
+              ]
+            },
+            "expr3": null,
+            "fodder1": [
+              {
+                "blanks": 0,
+                "comment": [],
+                "indent": 2,
+                "kind": 0
+              }
+            ],
+            "fodder2": [],
+            "hide": 1,
+            "id": "msg",
+            "kind": 1,
+            "method": null,
+            "opFodder": [],
+            "superSugar": false
+          },
+          {
+            "commaFodder": [],
+            "expr1": null,
+            "expr2": {
+              "type": "LiteralString",
+              "blockIndent": "",
+              "blockTermIndent": "",
+              "kind": 3,
+              "loc": {
+                "end": {
+                  "column": 28,
+                  "line": 7
+                },
+                "start": {
+                  "column": 12,
+                  "line": 7
+                }
+              },
+              "range": [
+                73,
+                89
+              ],
+              "value": "no \\n escapes"
+            },
+            "expr3": null,
+            "fodder1": [
+              {
+                "blanks": 0,
+                "comment": [],
+                "indent": 2,
+                "kind": 0
+              }
+            ],
+            "fodder2": [],
+            "hide": 1,
+            "id": "verbatim",
+            "kind": 1,
+            "method": null,
+            "opFodder": [],
+            "superSugar": false
+          }
+        ],
+        "loc": {
+          "end": {
+            "column": 1,
+            "line": 8
+          },
+          "start": {
+            "column": 0,
+            "line": 5
+          }
+        },
+        "range": [
+          42,
+          92
+        ],
+        "trailingComma": true
+      },
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 8
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        92
+      ]
+    }
+  ],
+  "tokens": [
+    {
+      "loc": {
+        "end": {
+          "column": 5,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        5
+      ],
+      "type": "Keyword",
+      "value": "local"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 14,
+          "line": 1
+        },
+        "start": {
+          "column": 6,
+          "line": 1
+        }
+      },
+      "range": [
+        6,
+        14
+      ],
+      "type": "Identifier",
+      "value": "greeting"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 16,
+          "line": 1
+        },
+        "start": {
+          "column": 15,
+          "line": 1
+        }
+      },
+      "range": [
+        15,
+        16
+      ],
+      "type": "Operator",
+      "value": "="
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 3,
+          "line": 4
+        },
+        "start": {
+          "column": 17,
+          "line": 1
+        }
+      },
+      "range": [
+        17,
+        40
+      ],
+      "type": "String",
+      "value": "|||\n  hello\n  world\n|||"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 4,
+          "line": 4
+        },
+        "start": {
+          "column": 3,
+          "line": 4
+        }
+      },
+      "range": [
+        40,
+        41
+      ],
+      "type": "Punctuator",
+      "value": ";"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 5
+        },
+        "start": {
+          "column": 0,
+          "line": 5
+        }
+      },
+      "range": [
+        42,
+        43
+      ],
+      "type": "Punctuator",
+      "value": "{"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 5,
+          "line": 6
+        },
+        "start": {
+          "column": 2,
+          "line": 6
+        }
+      },
+      "range": [
+        46,
+        49
+      ],
+      "type": "Identifier",
+      "value": "msg"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 6,
+          "line": 6
+        },
+        "start": {
+          "column": 5,
+          "line": 6
+        }
+      },
+      "range": [
+        49,
+        50
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 15,
+          "line": 6
+        },
+        "start": {
+          "column": 7,
+          "line": 6
+        }
+      },
+      "range": [
+        51,
+        59
+      ],
+      "type": "Identifier",
+      "value": "greeting"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 16,
+          "line": 6
+        },
+        "start": {
+          "column": 15,
+          "line": 6
+        }
+      },
+      "range": [
+        59,
+        60
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 7
+        },
+        "start": {
+          "column": 2,
+          "line": 7
+        }
+      },
+      "range": [
+        63,
+        71
+      ],
+      "type": "Identifier",
+      "value": "verbatim"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 11,
+          "line": 7
+        },
+        "start": {
+          "column": 10,
+          "line": 7
+        }
+      },
+      "range": [
+        71,
+        72
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 28,
+          "line": 7
+        },
+        "start": {
+          "column": 12,
+          "line": 7
+        }
+      },
+      "range": [
+        73,
+        89
+      ],
+      "type": "String",
+      "value": "@\"no \\n escapes\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 29,
+          "line": 7
+        },
+        "start": {
+          "column": 28,
+          "line": 7
+        }
+      },
+      "range": [
+        89,
+        90
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 8
+        },
+        "start": {
+          "column": 0,
+          "line": 8
+        }
+      },
+      "range": [
+        91,
+        92
+      ],
+      "type": "Punctuator",
+      "value": "}"
+    }
+  ],
+  "comments": []
+}

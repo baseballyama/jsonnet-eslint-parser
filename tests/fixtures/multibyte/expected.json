@@ -1,0 +1,414 @@
+{
+  "type": "Program",
+  "range": [
+    0,
+    121
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 5,
+      "column": 0
+    }
+  },
+  "body": [
+    {
+      "type": "Local",
+      "binds": [
+        {
+          "body": {
+            "type": "LiteralString",
+            "blockIndent": "",
+            "blockTermIndent": "",
+            "kind": 1,
+            "loc": {
+              "end": {
+                "column": 24,
+                "line": 3
+              },
+              "start": {
+                "column": 17,
+                "line": 3
+              }
+            },
+            "range": [
+              79,
+              86
+            ],
+            "value": "こんにちは"
+          },
+          "closeFodder": [],
+          "eqFodder": [],
+          "fun": null,
+          "varFodder": [],
+          "variable": "greeting"
+        }
+      ],
+      "body": {
+        "type": "Object",
+        "closeFodder": [],
+        "fields": [
+          {
+            "commaFodder": [],
+            "expr1": null,
+            "expr2": {
+              "type": "Binary",
+              "left": {
+                "type": "Var",
+                "id": "greeting",
+                "loc": {
+                  "end": {
+                    "column": 19,
+                    "line": 4
+                  },
+                  "start": {
+                    "column": 11,
+                    "line": 4
+                  }
+                },
+                "range": [
+                  99,
+                  107
+                ]
+              },
+              "loc": {
+                "end": {
+                  "column": 30,
+                  "line": 4
+                },
+                "start": {
+                  "column": 11,
+                  "line": 4
+                }
+              },
+              "op": 3,
+              "opFodder": [],
+              "range": [
+                99,
+                118
+              ],
+              "right": {
+                "type": "LiteralString",
+                "blockIndent": "",
+                "blockTermIndent": "",
+                "kind": 1,
+                "loc": {
+                  "end": {
+                    "column": 30,
+                    "line": 4
+                  },
+                  "start": {
+                    "column": 22,
+                    "line": 4
+                  }
+                },
+                "range": [
+                  110,
+                  118
+                ],
+                "value": " world"
+              }
+            },
+            "expr3": null,
+            "fodder1": [],
+            "fodder2": [],
+            "hide": 1,
+            "id": "message",
+            "kind": 1,
+            "method": null,
+            "opFodder": [],
+            "superSugar": false
+          }
+        ],
+        "loc": {
+          "end": {
+            "column": 32,
+            "line": 4
+          },
+          "start": {
+            "column": 0,
+            "line": 4
+          }
+        },
+        "range": [
+          88,
+          120
+        ],
+        "trailingComma": false
+      },
+      "loc": {
+        "end": {
+          "column": 32,
+          "line": 4
+        },
+        "start": {
+          "column": 0,
+          "line": 3
+        }
+      },
+      "range": [
+        62,
+        120
+      ]
+    }
+  ],
+  "tokens": [
+    {
+      "loc": {
+        "end": {
+          "column": 5,
+          "line": 3
+        },
+        "start": {
+          "column": 0,
+          "line": 3
+        }
+      },
+      "range": [
+        62,
+        67
+      ],
+      "type": "Keyword",
+      "value": "local"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 14,
+          "line": 3
+        },
+        "start": {
+          "column": 6,
+          "line": 3
+        }
+      },
+      "range": [
+        68,
+        76
+      ],
+      "type": "Identifier",
+      "value": "greeting"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 16,
+          "line": 3
+        },
+        "start": {
+          "column": 15,
+          "line": 3
+        }
+      },
+      "range": [
+        77,
+        78
+      ],
+      "type": "Operator",
+      "value": "="
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 24,
+          "line": 3
+        },
+        "start": {
+          "column": 17,
+          "line": 3
+        }
+      },
+      "range": [
+        79,
+        86
+      ],
+      "type": "String",
+      "value": "\"こんにちは\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 25,
+          "line": 3
+        },
+        "start": {
+          "column": 24,
+          "line": 3
+        }
+      },
+      "range": [
+        86,
+        87
+      ],
+      "type": "Punctuator",
+      "value": ";"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 4
+        },
+        "start": {
+          "column": 0,
+          "line": 4
+        }
+      },
+      "range": [
+        88,
+        89
+      ],
+      "type": "Punctuator",
+      "value": "{"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 9,
+          "line": 4
+        },
+        "start": {
+          "column": 2,
+          "line": 4
+        }
+      },
+      "range": [
+        90,
+        97
+      ],
+      "type": "Identifier",
+      "value": "message"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 4
+        },
+        "start": {
+          "column": 9,
+          "line": 4
+        }
+      },
+      "range": [
+        97,
+        98
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 19,
+          "line": 4
+        },
+        "start": {
+          "column": 11,
+          "line": 4
+        }
+      },
+      "range": [
+        99,
+        107
+      ],
+      "type": "Identifier",
+      "value": "greeting"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 21,
+          "line": 4
+        },
+        "start": {
+          "column": 20,
+          "line": 4
+        }
+      },
+      "range": [
+        108,
+        109
+      ],
+      "type": "Operator",
+      "value": "+"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 30,
+          "line": 4
+        },
+        "start": {
+          "column": 22,
+          "line": 4
+        }
+      },
+      "range": [
+        110,
+        118
+      ],
+      "type": "String",
+      "value": "\" world\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 32,
+          "line": 4
+        },
+        "start": {
+          "column": 31,
+          "line": 4
+        }
+      },
+      "range": [
+        119,
+        120
+      ],
+      "type": "Punctuator",
+      "value": "}"
+    }
+  ],
+  "comments": [
+    {
+      "loc": {
+        "end": {
+          "column": 50,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        50
+      ],
+      "type": "Line",
+      "value": " 日本語のコメント — multi-byte characters before the AST"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 2
+        },
+        "start": {
+          "column": 0,
+          "line": 2
+        }
+      },
+      "range": [
+        51,
+        61
+      ],
+      "type": "Line",
+      "value": " 絵文字: 😀"
+    }
+  ]
+}

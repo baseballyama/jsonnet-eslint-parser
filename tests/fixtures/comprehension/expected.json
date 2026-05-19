@@ -1,0 +1,1563 @@
+{
+  "type": "Program",
+  "range": [
+    0,
+    117
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 5,
+      "column": 0
+    }
+  },
+  "body": [
+    {
+      "type": "Object",
+      "closeFodder": [
+        {
+          "blanks": 0,
+          "comment": [],
+          "indent": 0,
+          "kind": 0
+        }
+      ],
+      "fields": [
+        {
+          "commaFodder": [],
+          "expr1": null,
+          "expr2": {
+            "type": "ArrayComp",
+            "body": {
+              "type": "Binary",
+              "left": {
+                "type": "Var",
+                "id": "x",
+                "loc": {
+                  "end": {
+                    "column": 13,
+                    "line": 2
+                  },
+                  "start": {
+                    "column": 12,
+                    "line": 2
+                  }
+                },
+                "range": [
+                  14,
+                  15
+                ]
+              },
+              "loc": {
+                "end": {
+                  "column": 17,
+                  "line": 2
+                },
+                "start": {
+                  "column": 12,
+                  "line": 2
+                }
+              },
+              "op": 0,
+              "opFodder": [],
+              "range": [
+                14,
+                19
+              ],
+              "right": {
+                "type": "Var",
+                "id": "x",
+                "loc": {
+                  "end": {
+                    "column": 17,
+                    "line": 2
+                  },
+                  "start": {
+                    "column": 16,
+                    "line": 2
+                  }
+                },
+                "range": [
+                  18,
+                  19
+                ]
+              }
+            },
+            "closeFodder": [],
+            "loc": {
+              "end": {
+                "column": 49,
+                "line": 2
+              },
+              "start": {
+                "column": 11,
+                "line": 2
+              }
+            },
+            "range": [
+              13,
+              51
+            ],
+            "spec": {
+              "conditions": [
+                {
+                  "expr": {
+                    "type": "Binary",
+                    "left": {
+                      "type": "Var",
+                      "id": "x",
+                      "loc": {
+                        "end": {
+                          "column": 44,
+                          "line": 2
+                        },
+                        "start": {
+                          "column": 43,
+                          "line": 2
+                        }
+                      },
+                      "range": [
+                        45,
+                        46
+                      ]
+                    },
+                    "loc": {
+                      "end": {
+                        "column": 48,
+                        "line": 2
+                      },
+                      "start": {
+                        "column": 43,
+                        "line": 2
+                      }
+                    },
+                    "op": 7,
+                    "opFodder": [],
+                    "range": [
+                      45,
+                      50
+                    ],
+                    "right": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 48,
+                          "line": 2
+                        },
+                        "start": {
+                          "column": 47,
+                          "line": 2
+                        }
+                      },
+                      "originalString": "1",
+                      "range": [
+                        49,
+                        50
+                      ]
+                    }
+                  },
+                  "ifFodder": []
+                }
+              ],
+              "expr": {
+                "type": "Array",
+                "closeFodder": [],
+                "elements": [
+                  {
+                    "commaFodder": [],
+                    "expr": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 29,
+                          "line": 2
+                        },
+                        "start": {
+                          "column": 28,
+                          "line": 2
+                        }
+                      },
+                      "originalString": "1",
+                      "range": [
+                        30,
+                        31
+                      ]
+                    }
+                  },
+                  {
+                    "commaFodder": [],
+                    "expr": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 32,
+                          "line": 2
+                        },
+                        "start": {
+                          "column": 31,
+                          "line": 2
+                        }
+                      },
+                      "originalString": "2",
+                      "range": [
+                        33,
+                        34
+                      ]
+                    }
+                  },
+                  {
+                    "commaFodder": [],
+                    "expr": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 35,
+                          "line": 2
+                        },
+                        "start": {
+                          "column": 34,
+                          "line": 2
+                        }
+                      },
+                      "originalString": "3",
+                      "range": [
+                        36,
+                        37
+                      ]
+                    }
+                  },
+                  {
+                    "commaFodder": [],
+                    "expr": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 38,
+                          "line": 2
+                        },
+                        "start": {
+                          "column": 37,
+                          "line": 2
+                        }
+                      },
+                      "originalString": "4",
+                      "range": [
+                        39,
+                        40
+                      ]
+                    }
+                  }
+                ],
+                "loc": {
+                  "end": {
+                    "column": 39,
+                    "line": 2
+                  },
+                  "start": {
+                    "column": 27,
+                    "line": 2
+                  }
+                },
+                "range": [
+                  29,
+                  41
+                ],
+                "trailingComma": false
+              },
+              "forFodder": [],
+              "inFodder": [],
+              "outer": null,
+              "varFodder": [],
+              "varName": "x"
+            },
+            "trailingComma": false,
+            "trailingCommaFodder": []
+          },
+          "expr3": null,
+          "fodder1": [
+            {
+              "blanks": 0,
+              "comment": [],
+              "indent": 2,
+              "kind": 0
+            }
+          ],
+          "fodder2": [],
+          "hide": 1,
+          "id": "squares",
+          "kind": 1,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        },
+        {
+          "commaFodder": [],
+          "expr1": null,
+          "expr2": {
+            "type": "ObjectComp",
+            "closeFodder": [],
+            "fields": [
+              {
+                "commaFodder": [],
+                "expr1": {
+                  "type": "Var",
+                  "id": "k",
+                  "loc": {
+                    "end": {
+                      "column": 13,
+                      "line": 3
+                    },
+                    "start": {
+                      "column": 12,
+                      "line": 3
+                    }
+                  },
+                  "range": [
+                    65,
+                    66
+                  ]
+                },
+                "expr2": {
+                  "type": "Binary",
+                  "left": {
+                    "type": "Var",
+                    "id": "v",
+                    "loc": {
+                      "end": {
+                        "column": 17,
+                        "line": 3
+                      },
+                      "start": {
+                        "column": 16,
+                        "line": 3
+                      }
+                    },
+                    "range": [
+                      69,
+                      70
+                    ]
+                  },
+                  "loc": {
+                    "end": {
+                      "column": 22,
+                      "line": 3
+                    },
+                    "start": {
+                      "column": 16,
+                      "line": 3
+                    }
+                  },
+                  "op": 0,
+                  "opFodder": [],
+                  "range": [
+                    69,
+                    75
+                  ],
+                  "right": {
+                    "type": "LiteralNumber",
+                    "loc": {
+                      "end": {
+                        "column": 22,
+                        "line": 3
+                      },
+                      "start": {
+                        "column": 20,
+                        "line": 3
+                      }
+                    },
+                    "originalString": "10",
+                    "range": [
+                      73,
+                      75
+                    ]
+                  }
+                },
+                "expr3": null,
+                "fodder1": [],
+                "fodder2": [],
+                "hide": 1,
+                "id": null,
+                "kind": 2,
+                "method": null,
+                "opFodder": [],
+                "superSugar": false
+              }
+            ],
+            "loc": {
+              "end": {
+                "column": 60,
+                "line": 3
+              },
+              "start": {
+                "column": 9,
+                "line": 3
+              }
+            },
+            "range": [
+              62,
+              113
+            ],
+            "spec": {
+              "conditions": [],
+              "expr": {
+                "type": "Array",
+                "closeFodder": [],
+                "elements": [
+                  {
+                    "commaFodder": [],
+                    "expr": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 54,
+                          "line": 3
+                        },
+                        "start": {
+                          "column": 53,
+                          "line": 3
+                        }
+                      },
+                      "originalString": "1",
+                      "range": [
+                        106,
+                        107
+                      ]
+                    }
+                  },
+                  {
+                    "commaFodder": [],
+                    "expr": {
+                      "type": "LiteralNumber",
+                      "loc": {
+                        "end": {
+                          "column": 57,
+                          "line": 3
+                        },
+                        "start": {
+                          "column": 56,
+                          "line": 3
+                        }
+                      },
+                      "originalString": "2",
+                      "range": [
+                        109,
+                        110
+                      ]
+                    }
+                  }
+                ],
+                "loc": {
+                  "end": {
+                    "column": 58,
+                    "line": 3
+                  },
+                  "start": {
+                    "column": 52,
+                    "line": 3
+                  }
+                },
+                "range": [
+                  105,
+                  111
+                ],
+                "trailingComma": false
+              },
+              "forFodder": [],
+              "inFodder": [],
+              "outer": {
+                "conditions": [],
+                "expr": {
+                  "type": "Array",
+                  "closeFodder": [],
+                  "elements": [
+                    {
+                      "commaFodder": [],
+                      "expr": {
+                        "type": "LiteralString",
+                        "blockIndent": "",
+                        "blockTermIndent": "",
+                        "kind": 1,
+                        "loc": {
+                          "end": {
+                            "column": 36,
+                            "line": 3
+                          },
+                          "start": {
+                            "column": 33,
+                            "line": 3
+                          }
+                        },
+                        "range": [
+                          86,
+                          89
+                        ],
+                        "value": "a"
+                      }
+                    },
+                    {
+                      "commaFodder": [],
+                      "expr": {
+                        "type": "LiteralString",
+                        "blockIndent": "",
+                        "blockTermIndent": "",
+                        "kind": 1,
+                        "loc": {
+                          "end": {
+                            "column": 41,
+                            "line": 3
+                          },
+                          "start": {
+                            "column": 38,
+                            "line": 3
+                          }
+                        },
+                        "range": [
+                          91,
+                          94
+                        ],
+                        "value": "b"
+                      }
+                    }
+                  ],
+                  "loc": {
+                    "end": {
+                      "column": 42,
+                      "line": 3
+                    },
+                    "start": {
+                      "column": 32,
+                      "line": 3
+                    }
+                  },
+                  "range": [
+                    85,
+                    95
+                  ],
+                  "trailingComma": false
+                },
+                "forFodder": [],
+                "inFodder": [],
+                "outer": null,
+                "varFodder": [],
+                "varName": "k"
+              },
+              "varFodder": [],
+              "varName": "v"
+            },
+            "trailingComma": false,
+            "trailingCommaFodder": []
+          },
+          "expr3": null,
+          "fodder1": [
+            {
+              "blanks": 0,
+              "comment": [],
+              "indent": 2,
+              "kind": 0
+            }
+          ],
+          "fodder2": [],
+          "hide": 1,
+          "id": "table",
+          "kind": 1,
+          "method": null,
+          "opFodder": [],
+          "superSugar": false
+        }
+      ],
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 4
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        116
+      ],
+      "trailingComma": true
+    }
+  ],
+  "tokens": [
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        1
+      ],
+      "type": "Punctuator",
+      "value": "{"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 9,
+          "line": 2
+        },
+        "start": {
+          "column": 2,
+          "line": 2
+        }
+      },
+      "range": [
+        4,
+        11
+      ],
+      "type": "Identifier",
+      "value": "squares"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 2
+        },
+        "start": {
+          "column": 9,
+          "line": 2
+        }
+      },
+      "range": [
+        11,
+        12
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 12,
+          "line": 2
+        },
+        "start": {
+          "column": 11,
+          "line": 2
+        }
+      },
+      "range": [
+        13,
+        14
+      ],
+      "type": "Punctuator",
+      "value": "["
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 13,
+          "line": 2
+        },
+        "start": {
+          "column": 12,
+          "line": 2
+        }
+      },
+      "range": [
+        14,
+        15
+      ],
+      "type": "Identifier",
+      "value": "x"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 15,
+          "line": 2
+        },
+        "start": {
+          "column": 14,
+          "line": 2
+        }
+      },
+      "range": [
+        16,
+        17
+      ],
+      "type": "Operator",
+      "value": "*"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 17,
+          "line": 2
+        },
+        "start": {
+          "column": 16,
+          "line": 2
+        }
+      },
+      "range": [
+        18,
+        19
+      ],
+      "type": "Identifier",
+      "value": "x"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 21,
+          "line": 2
+        },
+        "start": {
+          "column": 18,
+          "line": 2
+        }
+      },
+      "range": [
+        20,
+        23
+      ],
+      "type": "Keyword",
+      "value": "for"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 23,
+          "line": 2
+        },
+        "start": {
+          "column": 22,
+          "line": 2
+        }
+      },
+      "range": [
+        24,
+        25
+      ],
+      "type": "Identifier",
+      "value": "x"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 26,
+          "line": 2
+        },
+        "start": {
+          "column": 24,
+          "line": 2
+        }
+      },
+      "range": [
+        26,
+        28
+      ],
+      "type": "Keyword",
+      "value": "in"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 28,
+          "line": 2
+        },
+        "start": {
+          "column": 27,
+          "line": 2
+        }
+      },
+      "range": [
+        29,
+        30
+      ],
+      "type": "Punctuator",
+      "value": "["
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 29,
+          "line": 2
+        },
+        "start": {
+          "column": 28,
+          "line": 2
+        }
+      },
+      "range": [
+        30,
+        31
+      ],
+      "type": "Numeric",
+      "value": "1"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 30,
+          "line": 2
+        },
+        "start": {
+          "column": 29,
+          "line": 2
+        }
+      },
+      "range": [
+        31,
+        32
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 32,
+          "line": 2
+        },
+        "start": {
+          "column": 31,
+          "line": 2
+        }
+      },
+      "range": [
+        33,
+        34
+      ],
+      "type": "Numeric",
+      "value": "2"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 33,
+          "line": 2
+        },
+        "start": {
+          "column": 32,
+          "line": 2
+        }
+      },
+      "range": [
+        34,
+        35
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 35,
+          "line": 2
+        },
+        "start": {
+          "column": 34,
+          "line": 2
+        }
+      },
+      "range": [
+        36,
+        37
+      ],
+      "type": "Numeric",
+      "value": "3"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 36,
+          "line": 2
+        },
+        "start": {
+          "column": 35,
+          "line": 2
+        }
+      },
+      "range": [
+        37,
+        38
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 38,
+          "line": 2
+        },
+        "start": {
+          "column": 37,
+          "line": 2
+        }
+      },
+      "range": [
+        39,
+        40
+      ],
+      "type": "Numeric",
+      "value": "4"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 39,
+          "line": 2
+        },
+        "start": {
+          "column": 38,
+          "line": 2
+        }
+      },
+      "range": [
+        40,
+        41
+      ],
+      "type": "Punctuator",
+      "value": "]"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 42,
+          "line": 2
+        },
+        "start": {
+          "column": 40,
+          "line": 2
+        }
+      },
+      "range": [
+        42,
+        44
+      ],
+      "type": "Keyword",
+      "value": "if"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 44,
+          "line": 2
+        },
+        "start": {
+          "column": 43,
+          "line": 2
+        }
+      },
+      "range": [
+        45,
+        46
+      ],
+      "type": "Identifier",
+      "value": "x"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 46,
+          "line": 2
+        },
+        "start": {
+          "column": 45,
+          "line": 2
+        }
+      },
+      "range": [
+        47,
+        48
+      ],
+      "type": "Operator",
+      "value": ">"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 48,
+          "line": 2
+        },
+        "start": {
+          "column": 47,
+          "line": 2
+        }
+      },
+      "range": [
+        49,
+        50
+      ],
+      "type": "Numeric",
+      "value": "1"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 49,
+          "line": 2
+        },
+        "start": {
+          "column": 48,
+          "line": 2
+        }
+      },
+      "range": [
+        50,
+        51
+      ],
+      "type": "Punctuator",
+      "value": "]"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 50,
+          "line": 2
+        },
+        "start": {
+          "column": 49,
+          "line": 2
+        }
+      },
+      "range": [
+        51,
+        52
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 7,
+          "line": 3
+        },
+        "start": {
+          "column": 2,
+          "line": 3
+        }
+      },
+      "range": [
+        55,
+        60
+      ],
+      "type": "Identifier",
+      "value": "table"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 8,
+          "line": 3
+        },
+        "start": {
+          "column": 7,
+          "line": 3
+        }
+      },
+      "range": [
+        60,
+        61
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 10,
+          "line": 3
+        },
+        "start": {
+          "column": 9,
+          "line": 3
+        }
+      },
+      "range": [
+        62,
+        63
+      ],
+      "type": "Punctuator",
+      "value": "{"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 12,
+          "line": 3
+        },
+        "start": {
+          "column": 11,
+          "line": 3
+        }
+      },
+      "range": [
+        64,
+        65
+      ],
+      "type": "Punctuator",
+      "value": "["
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 13,
+          "line": 3
+        },
+        "start": {
+          "column": 12,
+          "line": 3
+        }
+      },
+      "range": [
+        65,
+        66
+      ],
+      "type": "Identifier",
+      "value": "k"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 14,
+          "line": 3
+        },
+        "start": {
+          "column": 13,
+          "line": 3
+        }
+      },
+      "range": [
+        66,
+        67
+      ],
+      "type": "Punctuator",
+      "value": "]"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 15,
+          "line": 3
+        },
+        "start": {
+          "column": 14,
+          "line": 3
+        }
+      },
+      "range": [
+        67,
+        68
+      ],
+      "type": "Operator",
+      "value": ":"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 17,
+          "line": 3
+        },
+        "start": {
+          "column": 16,
+          "line": 3
+        }
+      },
+      "range": [
+        69,
+        70
+      ],
+      "type": "Identifier",
+      "value": "v"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 19,
+          "line": 3
+        },
+        "start": {
+          "column": 18,
+          "line": 3
+        }
+      },
+      "range": [
+        71,
+        72
+      ],
+      "type": "Operator",
+      "value": "*"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 22,
+          "line": 3
+        },
+        "start": {
+          "column": 20,
+          "line": 3
+        }
+      },
+      "range": [
+        73,
+        75
+      ],
+      "type": "Numeric",
+      "value": "10"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 26,
+          "line": 3
+        },
+        "start": {
+          "column": 23,
+          "line": 3
+        }
+      },
+      "range": [
+        76,
+        79
+      ],
+      "type": "Keyword",
+      "value": "for"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 28,
+          "line": 3
+        },
+        "start": {
+          "column": 27,
+          "line": 3
+        }
+      },
+      "range": [
+        80,
+        81
+      ],
+      "type": "Identifier",
+      "value": "k"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 31,
+          "line": 3
+        },
+        "start": {
+          "column": 29,
+          "line": 3
+        }
+      },
+      "range": [
+        82,
+        84
+      ],
+      "type": "Keyword",
+      "value": "in"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 33,
+          "line": 3
+        },
+        "start": {
+          "column": 32,
+          "line": 3
+        }
+      },
+      "range": [
+        85,
+        86
+      ],
+      "type": "Punctuator",
+      "value": "["
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 36,
+          "line": 3
+        },
+        "start": {
+          "column": 33,
+          "line": 3
+        }
+      },
+      "range": [
+        86,
+        89
+      ],
+      "type": "String",
+      "value": "\"a\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 37,
+          "line": 3
+        },
+        "start": {
+          "column": 36,
+          "line": 3
+        }
+      },
+      "range": [
+        89,
+        90
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 41,
+          "line": 3
+        },
+        "start": {
+          "column": 38,
+          "line": 3
+        }
+      },
+      "range": [
+        91,
+        94
+      ],
+      "type": "String",
+      "value": "\"b\""
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 42,
+          "line": 3
+        },
+        "start": {
+          "column": 41,
+          "line": 3
+        }
+      },
+      "range": [
+        94,
+        95
+      ],
+      "type": "Punctuator",
+      "value": "]"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 46,
+          "line": 3
+        },
+        "start": {
+          "column": 43,
+          "line": 3
+        }
+      },
+      "range": [
+        96,
+        99
+      ],
+      "type": "Keyword",
+      "value": "for"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 48,
+          "line": 3
+        },
+        "start": {
+          "column": 47,
+          "line": 3
+        }
+      },
+      "range": [
+        100,
+        101
+      ],
+      "type": "Identifier",
+      "value": "v"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 51,
+          "line": 3
+        },
+        "start": {
+          "column": 49,
+          "line": 3
+        }
+      },
+      "range": [
+        102,
+        104
+      ],
+      "type": "Keyword",
+      "value": "in"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 53,
+          "line": 3
+        },
+        "start": {
+          "column": 52,
+          "line": 3
+        }
+      },
+      "range": [
+        105,
+        106
+      ],
+      "type": "Punctuator",
+      "value": "["
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 54,
+          "line": 3
+        },
+        "start": {
+          "column": 53,
+          "line": 3
+        }
+      },
+      "range": [
+        106,
+        107
+      ],
+      "type": "Numeric",
+      "value": "1"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 55,
+          "line": 3
+        },
+        "start": {
+          "column": 54,
+          "line": 3
+        }
+      },
+      "range": [
+        107,
+        108
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 57,
+          "line": 3
+        },
+        "start": {
+          "column": 56,
+          "line": 3
+        }
+      },
+      "range": [
+        109,
+        110
+      ],
+      "type": "Numeric",
+      "value": "2"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 58,
+          "line": 3
+        },
+        "start": {
+          "column": 57,
+          "line": 3
+        }
+      },
+      "range": [
+        110,
+        111
+      ],
+      "type": "Punctuator",
+      "value": "]"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 60,
+          "line": 3
+        },
+        "start": {
+          "column": 59,
+          "line": 3
+        }
+      },
+      "range": [
+        112,
+        113
+      ],
+      "type": "Punctuator",
+      "value": "}"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 61,
+          "line": 3
+        },
+        "start": {
+          "column": 60,
+          "line": 3
+        }
+      },
+      "range": [
+        113,
+        114
+      ],
+      "type": "Punctuator",
+      "value": ","
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 1,
+          "line": 4
+        },
+        "start": {
+          "column": 0,
+          "line": 4
+        }
+      },
+      "range": [
+        115,
+        116
+      ],
+      "type": "Punctuator",
+      "value": "}"
+    }
+  ],
+  "comments": []
+}

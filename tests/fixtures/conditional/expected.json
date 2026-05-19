@@ -1,0 +1,348 @@
+{
+  "type": "Program",
+  "range": [
+    0,
+    43
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 2,
+      "column": 0
+    }
+  },
+  "body": [
+    {
+      "type": "Conditional",
+      "branchFalse": {
+        "type": "Conditional",
+        "branchFalse": {
+          "type": "LiteralNumber",
+          "loc": {
+            "end": {
+              "column": 42,
+              "line": 1
+            },
+            "start": {
+              "column": 41,
+              "line": 1
+            }
+          },
+          "originalString": "3",
+          "range": [
+            41,
+            42
+          ]
+        },
+        "branchTrue": {
+          "type": "LiteralNumber",
+          "loc": {
+            "end": {
+              "column": 35,
+              "line": 1
+            },
+            "start": {
+              "column": 34,
+              "line": 1
+            }
+          },
+          "originalString": "2",
+          "range": [
+            34,
+            35
+          ]
+        },
+        "cond": {
+          "type": "LiteralBoolean",
+          "loc": {
+            "end": {
+              "column": 28,
+              "line": 1
+            },
+            "start": {
+              "column": 23,
+              "line": 1
+            }
+          },
+          "range": [
+            23,
+            28
+          ],
+          "value": false
+        },
+        "elseFodder": [],
+        "loc": {
+          "end": {
+            "column": 42,
+            "line": 1
+          },
+          "start": {
+            "column": 20,
+            "line": 1
+          }
+        },
+        "range": [
+          20,
+          42
+        ],
+        "thenFodder": []
+      },
+      "branchTrue": {
+        "type": "LiteralNumber",
+        "loc": {
+          "end": {
+            "column": 14,
+            "line": 1
+          },
+          "start": {
+            "column": 13,
+            "line": 1
+          }
+        },
+        "originalString": "1",
+        "range": [
+          13,
+          14
+        ]
+      },
+      "cond": {
+        "type": "LiteralBoolean",
+        "loc": {
+          "end": {
+            "column": 7,
+            "line": 1
+          },
+          "start": {
+            "column": 3,
+            "line": 1
+          }
+        },
+        "range": [
+          3,
+          7
+        ],
+        "value": true
+      },
+      "elseFodder": [],
+      "loc": {
+        "end": {
+          "column": 42,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        42
+      ],
+      "thenFodder": []
+    }
+  ],
+  "tokens": [
+    {
+      "loc": {
+        "end": {
+          "column": 2,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "line": 1
+        }
+      },
+      "range": [
+        0,
+        2
+      ],
+      "type": "Keyword",
+      "value": "if"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 7,
+          "line": 1
+        },
+        "start": {
+          "column": 3,
+          "line": 1
+        }
+      },
+      "range": [
+        3,
+        7
+      ],
+      "type": "Keyword",
+      "value": "true"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 12,
+          "line": 1
+        },
+        "start": {
+          "column": 8,
+          "line": 1
+        }
+      },
+      "range": [
+        8,
+        12
+      ],
+      "type": "Keyword",
+      "value": "then"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 14,
+          "line": 1
+        },
+        "start": {
+          "column": 13,
+          "line": 1
+        }
+      },
+      "range": [
+        13,
+        14
+      ],
+      "type": "Numeric",
+      "value": "1"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 19,
+          "line": 1
+        },
+        "start": {
+          "column": 15,
+          "line": 1
+        }
+      },
+      "range": [
+        15,
+        19
+      ],
+      "type": "Keyword",
+      "value": "else"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 22,
+          "line": 1
+        },
+        "start": {
+          "column": 20,
+          "line": 1
+        }
+      },
+      "range": [
+        20,
+        22
+      ],
+      "type": "Keyword",
+      "value": "if"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 28,
+          "line": 1
+        },
+        "start": {
+          "column": 23,
+          "line": 1
+        }
+      },
+      "range": [
+        23,
+        28
+      ],
+      "type": "Keyword",
+      "value": "false"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 33,
+          "line": 1
+        },
+        "start": {
+          "column": 29,
+          "line": 1
+        }
+      },
+      "range": [
+        29,
+        33
+      ],
+      "type": "Keyword",
+      "value": "then"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 35,
+          "line": 1
+        },
+        "start": {
+          "column": 34,
+          "line": 1
+        }
+      },
+      "range": [
+        34,
+        35
+      ],
+      "type": "Numeric",
+      "value": "2"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 40,
+          "line": 1
+        },
+        "start": {
+          "column": 36,
+          "line": 1
+        }
+      },
+      "range": [
+        36,
+        40
+      ],
+      "type": "Keyword",
+      "value": "else"
+    },
+    {
+      "loc": {
+        "end": {
+          "column": 42,
+          "line": 1
+        },
+        "start": {
+          "column": 41,
+          "line": 1
+        }
+      },
+      "range": [
+        41,
+        42
+      ],
+      "type": "Numeric",
+      "value": "3"
+    }
+  ],
+  "comments": []
+}

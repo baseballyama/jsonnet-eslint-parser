@@ -1,0 +1,12 @@
+dist/
+coverage/
+node_modules/
+wasm/.cache/
+src/wasm/wasm_exec.js
+src/wasm/jsonnet.wasm
+pnpm-lock.yaml
+CHANGELOG.md
+
+# Fixture snapshots are produced by our own JSON writer; prettier would
+# reorder keys and break round-trip diffs.
+tests/fixtures/**/expected.json
