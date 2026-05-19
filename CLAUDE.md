@@ -70,6 +70,20 @@ If you need to bump the go-jsonnet version, update `JSONNET_GO_VERSION` in
 `wasm/build.sh`, rebuild, and check the fixture snapshots for behaviour
 changes.
 
+### Automated upstream sync
+
+`.github/workflows/track-upstream.yml` runs every Monday morning. It reads
+`JSONNET_GO_VERSION` out of `wasm/build.sh`, asks the GitHub API for the
+latest `google/go-jsonnet` release, and — if they differ — rebuilds the
+wasm, regenerates fixtures, runs `pnpm test:all`, and opens (or refreshes)
+a pull request. If the rebuild or tests fail (e.g. an upstream API change
+broke `wasm/main.go`), it opens a tracking issue instead.
+
+For the workflow to be able to open pull requests, the repository setting
+**Settings → Actions → General → Workflow permissions → Allow GitHub
+Actions to create and approve pull requests** must be enabled. Without it
+the bump job will fail at the "Open or refresh pull request" step.
+
 ## Public API contract
 
 > One way to do one thing.

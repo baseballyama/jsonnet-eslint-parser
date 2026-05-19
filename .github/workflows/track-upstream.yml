@@ -1,0 +1,287 @@
+name: Track go-jsonnet upstream
+
+# Weekly probe for new google/go-jsonnet releases.
+#
+# Flow:
+#   1. `check` reads the version pinned in `wasm/build.sh` and the latest
+#      tag on `google/go-jsonnet`. If they match, the workflow exits.
+#   2. `bump` updates the pin, rebuilds the wasm, regenerates fixtures,
+#      runs `pnpm test:all`, and — on success — opens (or refreshes) a
+#      pull request.
+#   3. `fallback-issue` runs only when `bump` fails. It opens a tracking
+#      issue so a maintainer can investigate (the most likely cause is an
+#      API change in `internal/parser` that breaks `wasm/main.go`).
+#
+# All three jobs are idempotent: re-running them updates an existing PR
+# or issue rather than spawning duplicates.
+
+on:
+  schedule:
+    # Mondays at 09:00 UTC (Renovate runs early Monday too; staggered so
+    # the dashboard does not get hit at the exact same minute).
+    - cron: "30 9 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  # Only one upstream sync at a time across the whole repo so two cron
+  # ticks (or a manual dispatch + a cron tick) cannot race each other.
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  check:
+    name: Check upstream
+    runs-on: ubuntu-latest
+    outputs:
+      current: ${{ steps.current.outputs.version }}
+      latest: ${{ steps.latest.outputs.version }}
+      needs_bump: ${{ steps.compare.outputs.needs_bump }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Read pinned version from wasm/build.sh
+        id: current
+        run: |
+          set -euo pipefail
+          version=$(sed -nE 's/.*JSONNET_GO_VERSION:-(v[0-9][^}]*).*/\1/p' wasm/build.sh | head -n1)
+          if [ -z "$version" ]; then
+            echo "::error::could not extract JSONNET_GO_VERSION from wasm/build.sh"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Pinned: $version"
+
+      - name: Read latest google/go-jsonnet release
+        id: latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          version=$(gh api repos/google/go-jsonnet/releases/latest --jq .tag_name)
+          if [ -z "$version" ]; then
+            echo "::error::empty tag_name from upstream releases API"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Latest:  $version"
+
+      - name: Compare
+        id: compare
+        run: |
+          set -euo pipefail
+          current='${{ steps.current.outputs.version }}'
+          latest='${{ steps.latest.outputs.version }}'
+          if [ "$current" = "$latest" ]; then
+            echo "Already on latest ($current). Nothing to do."
+            echo "needs_bump=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Bump needed: $current -> $latest"
+            echo "needs_bump=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  bump:
+    name: Bump and verify
+    needs: check
+    if: needs.check.outputs.needs_bump == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.25"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Bump JSONNET_GO_VERSION
+        env:
+          NEW_VERSION: ${{ needs.check.outputs.latest }}
+        run: |
+          set -euo pipefail
+          # Replace the default value inside `${JSONNET_GO_VERSION:-vX.Y.Z}`
+          # so the override the build script honours stays intact.
+          sed -i -E \
+            "s|JSONNET_GO_VERSION:-v[^}]+|JSONNET_GO_VERSION:-${NEW_VERSION}|" \
+            wasm/build.sh
+          echo "wasm/build.sh now pinned to: $(grep JSONNET_GO_VERSION:- wasm/build.sh)"
+
+      - name: Rebuild wasm
+        run: pnpm build:wasm
+
+      - name: Regenerate fixture snapshots
+        run: UPDATE_FIXTURES=true pnpm vitest run tests/fixtures.test.ts
+
+      - name: Apply formatter to refreshed files
+        run: pnpm format:fix
+
+      - name: Run full check + test suite
+        run: pnpm test:all
+
+      - name: Add changeset entry
+        env:
+          NEW_VERSION: ${{ needs.check.outputs.latest }}
+          OLD_VERSION: ${{ needs.check.outputs.current }}
+        run: |
+          set -euo pipefail
+          changeset_path=".changeset/track-go-jsonnet-${NEW_VERSION//./-}.md"
+          cat > "$changeset_path" <<EOF
+          ---
+          "jsonnet-eslint-parser": patch
+          ---
+
+          Update bundled \`google/go-jsonnet\` to ${NEW_VERSION} (from ${OLD_VERSION}).
+          EOF
+
+      - name: Open or refresh pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: upstream/go-jsonnet-${{ needs.check.outputs.latest }}
+          delete-branch: true
+          commit-message: |
+            chore(deps): bump google/go-jsonnet to ${{ needs.check.outputs.latest }}
+
+            Auto-generated by .github/workflows/track-upstream.yml.
+          title: "chore(deps): bump google/go-jsonnet to ${{ needs.check.outputs.latest }}"
+          labels: |
+            dependencies
+            upstream
+          body: |
+            <!-- pr-template:v1 -->
+
+            ## Summary
+
+            Updates the bundled `google/go-jsonnet` from
+            **${{ needs.check.outputs.current }}** to
+            **${{ needs.check.outputs.latest }}**. Generated by
+            [`track-upstream.yml`](../actions/runs/${{ github.run_id }}).
+
+            ## Motivation
+
+            Routine upstream sync. Closes any open
+            "Track upstream `${{ needs.check.outputs.latest }}`" issue.
+
+            ## Changes
+
+            - `wasm/build.sh`: pin moved to `${{ needs.check.outputs.latest }}`.
+            - `src/wasm/jsonnet.wasm`: rebuilt against the new upstream.
+            - `tests/fixtures/**/expected.json`: regenerated via
+              `UPDATE_FIXTURES=true pnpm vitest run tests/fixtures.test.ts`.
+            - `.changeset/`: patch-level changeset added.
+
+            ## Testing
+
+            - `pnpm test:all` was run in the workflow that produced this PR
+              and exited successfully — see the run log linked above.
+            - Reviewer should still re-run CI locally if the wasm or
+              fixture diff is non-trivial; bot-authored PRs do not
+              re-trigger the standard CI workflow by design.
+
+            ## Breaking changes
+
+            None expected. If go-jsonnet introduced a new AST node type the
+            fixture diff will surface it; check whether it warrants a new
+            TypeScript export in `src/ast.ts`.
+
+            ## Checklist
+
+            - [x] Bumped the upstream pin.
+            - [x] Rebuilt `src/wasm/jsonnet.wasm`.
+            - [x] Regenerated fixture snapshots.
+            - [x] Added a changeset.
+            - [ ] Reviewer has skimmed the upstream release notes for
+                  behavioural changes that are not covered by fixtures.
+            - [ ] Reviewer has confirmed there is no new AST node type
+                  that needs a TypeScript surface.
+
+            <!-- pr-template:end -->
+
+  fallback-issue:
+    name: Open tracking issue on failure
+    needs: [check, bump]
+    # Run only when the bump job actually failed. `always()` lets us
+    # observe `needs.bump.result`; without it the dependent job is
+    # skipped entirely when an upstream `needs` failed.
+    if: always() && needs.check.outputs.needs_bump == 'true' && needs.bump.result == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Open or update tracking issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          OLD_VERSION: ${{ needs.check.outputs.current }}
+          NEW_VERSION: ${{ needs.check.outputs.latest }}
+        run: |
+          set -euo pipefail
+          title="Track upstream: google/go-jsonnet ${NEW_VERSION}"
+          # Search by exact title within open issues with the upstream
+          # label so we update one issue per upstream version instead of
+          # creating a new one on every failed run.
+          existing=$(gh issue list \
+            --repo "$REPO" \
+            --state open \
+            --label upstream \
+            --search "$title in:title" \
+            --json number,title \
+            --jq ".[] | select(.title == \"$title\") | .number" \
+            | head -n1)
+
+          body=$(cat <<EOF
+          The automated upstream-sync workflow tried to bump
+          \`google/go-jsonnet\` from \`${OLD_VERSION}\` to \`${NEW_VERSION}\`
+          and failed.
+
+          - Run: ${RUN_URL}
+          - Most likely cause: an API change in
+            \`github.com/google/go-jsonnet/internal/parser\` that breaks
+            \`wasm/main.go\` or \`wasm/build.sh\`'s accessor injection.
+
+          ### What a maintainer should do
+
+          1. Read the upstream release notes for \`${NEW_VERSION}\`.
+          2. Run \`bash wasm/build.sh\` locally to reproduce the failure.
+          3. Patch \`wasm/main.go\` and/or the accessor stub injected by
+             \`wasm/build.sh\` to match the new internal layout.
+          4. Re-run \`UPDATE_FIXTURES=true pnpm test\` and
+             \`pnpm test:all\`.
+          5. Land the bump and close this issue.
+
+          This issue will be reopened with a new comment on every failed
+          weekly run until \`wasm/build.sh\` is pinned to \`${NEW_VERSION}\`
+          or higher.
+          EOF
+          )
+
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body "$body"
+            echo "Updated existing issue #$existing"
+          else
+            gh issue create --repo "$REPO" \
+              --title "$title" \
+              --label upstream \
+              --label dependencies \
+              --body "$body"
+          fi
