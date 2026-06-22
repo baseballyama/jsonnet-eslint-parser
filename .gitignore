@@ -141,7 +141,6 @@ dist
 coverage/
 dist/
 .vscode/settings.json
-pnpm-lock.yaml
 
 # go-jsonnet build cache; the bridge script clones into here.
 wasm/.cache/
