@@ -61,6 +61,102 @@ const walk = (value: unknown): unknown => {
   return value;
 };
 
+/**
+ * go-jsonnet carries several child-bearing structures that are *not*
+ * themselves AST nodes: an object's `fields`, a `local`'s `binds`, an
+ * array's `elements`, a function's `parameters`, an apply's `arguments`
+ * (with its `positional` / `named` lists), and a comprehension's `spec`
+ * (with its `conditions`). In the raw tree these arrive as plain objects
+ * with no `nodeType`, so {@link cleanNode} leaves them without a `type`.
+ *
+ * ESLint's traverser bails out the moment it reaches a value without a
+ * string `type` — it never descends into such a node's own children. That
+ * means a container nested inside `local x = {...}` (under `binds[i].body`)
+ * or `[ {...} ]` (under `elements[i].expr`) would be unreachable, so rule
+ * visitors would silently never fire on the bulk of a real Jsonnet file.
+ *
+ * To make the tree fully traversable we promote each wrapper to a proper
+ * node: we give it a `type` derived from the key it sits under and a
+ * `range`/`loc` spanning its descendant nodes. The original metadata
+ * (`kind`, `hide`, `id`, fodder, …) is preserved untouched.
+ */
+const WRAPPER_TYPE_BY_KEY: Record<string, string> = {
+  fields: "ObjectField",
+  binds: "LocalBind",
+  elements: "ArrayElement",
+  parameters: "Parameter",
+  arguments: "ApplyArguments",
+  positional: "PositionalArgument",
+  named: "NamedArgument",
+  spec: "ForSpec",
+  outer: "ForSpec",
+  conditions: "IfSpec",
+};
+
+/**
+ * Collect the `range` of every descendant that already carries one,
+ * stopping at the first ranged node on each branch (its range already
+ * covers its own subtree). Used to compute a span for a promoted wrapper.
+ */
+const collectDescendantRanges = (value: unknown, acc: number[]): void => {
+  if (Array.isArray(value)) {
+    for (const item of value) collectDescendantRanges(item, acc);
+    return;
+  }
+  if (!isObject(value)) return;
+  const range = value["range"];
+  if (
+    Array.isArray(range) &&
+    typeof range[0] === "number" &&
+    typeof range[1] === "number"
+  ) {
+    acc.push(range[0], range[1]);
+    return;
+  }
+  for (const [key, child] of Object.entries(value)) {
+    if (key === "parent" || key === "loc") continue;
+    collectDescendantRanges(child, acc);
+  }
+};
+
+const promoteWrappers = (
+  code: string,
+  value: unknown,
+  parentKey: string | null,
+): void => {
+  if (Array.isArray(value)) {
+    for (const item of value) promoteWrappers(code, item, parentKey);
+    return;
+  }
+  if (!isObject(value)) return;
+
+  // Post-order: promote nested wrappers first so their `range` is set
+  // before we span the current one from its children.
+  for (const [key, child] of Object.entries(value)) {
+    if (key === "parent") continue;
+    promoteWrappers(code, child, key);
+  }
+
+  if (typeof value["type"] === "string" || parentKey === null) return;
+  const wrapperType = WRAPPER_TYPE_BY_KEY[parentKey];
+  if (wrapperType === undefined) return;
+
+  value["type"] = wrapperType;
+  if (!Array.isArray(value["range"])) {
+    const ranges: number[] = [];
+    collectDescendantRanges(value, ranges);
+    if (ranges.length > 0) {
+      const start = Math.min(...ranges);
+      const end = Math.max(...ranges);
+      value["range"] = [start, end];
+      value["loc"] = {
+        start: positionFromOffset(code, start),
+        end: positionFromOffset(code, end),
+      };
+    }
+  }
+};
+
 const attachParents = (
   node: unknown,
   parent: JsonnetNode | Program | null,
@@ -112,7 +208,14 @@ export const normalizeParseResult = (
   const body: JsonnetNode[] = [];
   if (raw.ast) {
     const cleaned = walk(raw.ast);
-    if (cleaned) body.push(cleaned as JsonnetNode);
+    if (cleaned) {
+      // Promote non-node wrapper structures (object fields, local binds,
+      // array elements, …) to proper nodes so ESLint can traverse the whole
+      // tree. Must run before `attachParents` so the stitched parent chain
+      // includes the wrappers.
+      promoteWrappers(code, cleaned, null);
+      body.push(cleaned as JsonnetNode);
+    }
   } else if (raw.error) {
     const message = raw.error;
     const start = 0;

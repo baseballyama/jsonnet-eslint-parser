@@ -61,7 +61,22 @@
           "eqFodder": [],
           "fun": null,
           "varFodder": [],
-          "variable": "lib"
+          "variable": "lib",
+          "type": "LocalBind",
+          "range": [
+            12,
+            34
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 12
+            },
+            "end": {
+              "line": 1,
+              "column": 34
+            }
+          }
         }
       ],
       "body": {
@@ -110,7 +125,22 @@
             "eqFodder": [],
             "fun": null,
             "varFodder": [],
-            "variable": "data"
+            "variable": "data",
+            "type": "LocalBind",
+            "range": [
+              49,
+              69
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 13
+              },
+              "end": {
+                "line": 2,
+                "column": 33
+              }
+            }
           }
         ],
         "body": {
@@ -159,7 +189,22 @@
               "eqFodder": [],
               "fun": null,
               "varFodder": [],
-              "variable": "bin"
+              "variable": "bin",
+              "type": "LocalBind",
+              "range": [
+                83,
+                102
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 12
+                },
+                "end": {
+                  "line": 3,
+                  "column": 31
+                }
+              }
             }
           ],
           "body": {
@@ -200,9 +245,39 @@
                             124,
                             125
                           ]
+                        },
+                        "type": "PositionalArgument",
+                        "range": [
+                          124,
+                          125
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 18
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 19
+                          }
                         }
                       }
-                    ]
+                    ],
+                    "type": "ApplyArguments",
+                    "range": [
+                      124,
+                      125
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 19
+                      }
+                    }
                   },
                   "fodderLeft": [],
                   "fodderRight": [],
@@ -278,7 +353,22 @@
                 "kind": 1,
                 "method": null,
                 "opFodder": [],
-                "superSugar": false
+                "superSugar": false,
+                "type": "ObjectField",
+                "range": [
+                  117,
+                  126
+                ],
+                "loc": {
+                  "start": {
+                    "line": 5,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 20
+                  }
+                }
               },
               {
                 "commaFodder": [],
@@ -316,7 +406,22 @@
                 "kind": 1,
                 "method": null,
                 "opFodder": [],
-                "superSugar": false
+                "superSugar": false,
+                "type": "ObjectField",
+                "range": [
+                  135,
+                  139
+                ],
+                "loc": {
+                  "start": {
+                    "line": 6,
+                    "column": 7
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 11
+                  }
+                }
               },
               {
                 "commaFodder": [],
@@ -354,7 +459,22 @@
                 "kind": 1,
                 "method": null,
                 "opFodder": [],
-                "superSugar": false
+                "superSugar": false,
+                "type": "ObjectField",
+                "range": [
+                  151,
+                  154
+                ],
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 10
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 13
+                  }
+                }
               }
             ],
             "loc": {

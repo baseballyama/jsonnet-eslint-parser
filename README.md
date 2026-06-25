@@ -122,6 +122,24 @@ The full type catalogue lives in [`src/ast.ts`](./src/ast.ts) and is re-exported
 
 The parser surfaces the **raw** AST, not the post-desugar form. That means object literals stay as `Object` (not `DesugaredObject`), `local` bindings stay as `Local` + `LocalBind`, and so on. Source-faithful linting is the design goal — rule authors should see what the user wrote.
 
+### Wrapper nodes
+
+go-jsonnet models several child-bearing structures as plain records rather than nodes. To keep the tree fully traversable by ESLint (whose traverser stops at any value without a string `type`), the parser promotes each of them to a real node with a `type`, a `range`/`loc` spanning its children, and an entry in `visitorKeys`:
+
+| Wrapper node         | Sits under                                             | Carries                                         |
+| -------------------- | ------------------------------------------------------ | ----------------------------------------------- |
+| `ObjectField`        | `Object.fields` / `ObjectComp.fields`                  | `kind`, `hide`, `id`, `expr1`–`expr3`, `method` |
+| `LocalBind`          | `Local.binds`                                          | `variable`, `body`, `fun`                       |
+| `ArrayElement`       | `Array.elements`                                       | `expr`                                          |
+| `Parameter`          | `Function.parameters`                                  | `name`, `defaultArg`                            |
+| `ApplyArguments`     | `Apply.arguments`                                      | `positional`, `named`                           |
+| `PositionalArgument` | `ApplyArguments.positional`                            | `expr`                                          |
+| `NamedArgument`      | `ApplyArguments.named`                                 | `name`, `arg`                                   |
+| `ForSpec`            | `ArrayComp.spec` / `ObjectComp.spec` / `ForSpec.outer` | `varName`, `expr`, `conditions`, `outer`        |
+| `IfSpec`             | `ForSpec.conditions`                                   | `expr`                                          |
+
+The original metadata is preserved untouched — promotion only adds `type`/`range`/`loc`. A `Parameter` without a default argument and an `ApplyArguments` with no arguments span no child node, so their `range`/`loc` are absent.
+
 ### Parse errors
 
 When go-jsonnet refuses the source, the parser still returns a `Program` with a single `JsonnetParseError` node in `body`. Tokens and comments scanned before the failure are preserved, so ESLint rules that work off the token stream still run on broken files. The `error` field carries the diagnostic.
