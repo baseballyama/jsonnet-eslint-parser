@@ -41,7 +41,22 @@
           "eqFodder": [],
           "fun": null,
           "varFodder": [],
-          "variable": "x"
+          "variable": "x",
+          "type": "LocalBind",
+          "range": [
+            10,
+            11
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 10
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
         }
       ],
       "body": {
@@ -107,7 +122,22 @@
             "eqFodder": [],
             "fun": null,
             "varFodder": [],
-            "variable": "y"
+            "variable": "y",
+            "type": "LocalBind",
+            "range": [
+              23,
+              28
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 10
+              },
+              "end": {
+                "line": 2,
+                "column": 15
+              }
+            }
           },
           {
             "body": {
@@ -183,7 +213,8 @@
                   "defaultArg": null,
                   "eqFodder": [],
                   "name": "a",
-                  "nameFodder": []
+                  "nameFodder": [],
+                  "type": "Parameter"
                 }
               ],
               "parenLeftFodder": [],
@@ -205,7 +236,22 @@
                 "kind": 0
               }
             ],
-            "variable": "z"
+            "variable": "z",
+            "type": "LocalBind",
+            "range": [
+              40,
+              57
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 10
+              },
+              "end": {
+                "line": 3,
+                "column": 27
+              }
+            }
           }
         ],
         "body": {
@@ -239,9 +285,39 @@
                           71,
                           72
                         ]
+                      },
+                      "type": "PositionalArgument",
+                      "range": [
+                        71,
+                        72
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 13
+                        }
                       }
                     }
-                  ]
+                  ],
+                  "type": "ApplyArguments",
+                  "range": [
+                    71,
+                    72
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 13
+                    }
+                  }
                 },
                 "fodderLeft": [],
                 "fodderRight": [],
@@ -289,7 +365,22 @@
               "kind": 1,
               "method": null,
               "opFodder": [],
-              "superSugar": false
+              "superSugar": false,
+              "type": "ObjectField",
+              "range": [
+                69,
+                73
+              ],
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 10
+                },
+                "end": {
+                  "line": 4,
+                  "column": 14
+                }
+              }
             }
           ],
           "loc": {

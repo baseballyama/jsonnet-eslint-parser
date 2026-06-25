@@ -44,7 +44,22 @@
           "eqFodder": [],
           "fun": null,
           "varFodder": [],
-          "variable": "greeting"
+          "variable": "greeting",
+          "type": "LocalBind",
+          "range": [
+            79,
+            86
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 17
+            },
+            "end": {
+              "line": 3,
+              "column": 24
+            }
+          }
         }
       ],
       "body": {
@@ -120,7 +135,22 @@
             "kind": 1,
             "method": null,
             "opFodder": [],
-            "superSugar": false
+            "superSugar": false,
+            "type": "ObjectField",
+            "range": [
+              99,
+              118
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 11
+              },
+              "end": {
+                "line": 4,
+                "column": 30
+              }
+            }
           }
         ],
         "loc": {

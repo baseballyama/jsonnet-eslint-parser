@@ -183,7 +183,14 @@ export interface Parameter {
   type: "Parameter";
   name: IdentifierName;
   defaultArg?: JsonnetNode | null;
+  /**
+   * Present only when the parameter spans at least one child node (i.e. it
+   * has a `defaultArg`). A bare positional parameter carries no source
+   * position in go-jsonnet, so `range`/`loc` are absent for it.
+   */
+  range?: Range;
   loc?: ESLintSourceLocation;
+  parent?: JsonnetNode | Program;
 }
 
 export interface Function extends BaseNode {
@@ -193,18 +200,31 @@ export interface Function extends BaseNode {
   trailingComma: boolean;
 }
 
-export interface NamedArgument {
+export interface NamedArgument extends BaseNode {
+  type: "NamedArgument";
   name: IdentifierName;
   arg: JsonnetNode;
+}
+
+export interface PositionalArgument extends BaseNode {
+  type: "PositionalArgument";
+  expr: JsonnetNode;
+}
+
+export interface ApplyArguments {
+  type: "ApplyArguments";
+  positional: PositionalArgument[];
+  named: NamedArgument[];
+  /** Absent when the call has no arguments (nothing to span). */
+  range?: Range;
+  loc?: ESLintSourceLocation;
+  parent?: JsonnetNode | Program;
 }
 
 export interface Apply extends BaseNode {
   type: "Apply";
   target: JsonnetNode;
-  arguments: {
-    positional: { expr: JsonnetNode }[];
-    named: NamedArgument[];
-  };
+  arguments: ApplyArguments;
   trailingComma: boolean;
   tailStrict: boolean;
 }
@@ -219,7 +239,8 @@ export interface ApplyBrace extends BaseNode {
 // Local bindings
 // ---------------------------------------------------------------------------
 
-export interface LocalBind {
+export interface LocalBind extends BaseNode {
+  type: "LocalBind";
   variable: IdentifierName;
   body: JsonnetNode;
   fun?: Function | null;
@@ -235,7 +256,8 @@ export interface Local extends BaseNode {
 // Arrays, objects, comprehensions
 // ---------------------------------------------------------------------------
 
-export interface ArrayElement {
+export interface ArrayElement extends BaseNode {
+  type: "ArrayElement";
   expr: JsonnetNode;
 }
 
@@ -252,18 +274,21 @@ export interface ArrayComp extends BaseNode {
   trailingComma: boolean;
 }
 
-export interface ForSpec {
+export interface ForSpec extends BaseNode {
+  type: "ForSpec";
   varName: IdentifierName;
   expr: JsonnetNode;
   conditions: IfSpec[];
   outer?: ForSpec | null;
 }
 
-export interface IfSpec {
+export interface IfSpec extends BaseNode {
+  type: "IfSpec";
   expr: JsonnetNode;
 }
 
-export interface ObjectField {
+export interface ObjectField extends BaseNode {
+  type: "ObjectField";
   /**
    * Numeric tag from go-jsonnet's ObjectFieldKind enum:
    *
@@ -388,4 +413,16 @@ export type JsonnetNode =
   | ImportBin
   | Parens
   | JsonnetParseError
+  // Promoted wrapper nodes (see `promoteWrappers` in normalize.ts). These are
+  // child-bearing structures that go-jsonnet does not model as nodes; the
+  // parser gives them a `type` so ESLint can traverse the whole tree.
+  | ObjectField
+  | LocalBind
+  | ArrayElement
+  | Parameter
+  | ApplyArguments
+  | PositionalArgument
+  | NamedArgument
+  | ForSpec
+  | IfSpec
   | UnknownNode;

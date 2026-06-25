@@ -38,6 +38,21 @@
               1,
               2
             ]
+          },
+          "type": "ArrayElement",
+          "range": [
+            1,
+            2
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 2
+            }
           }
         },
         {
@@ -59,6 +74,21 @@
               4,
               5
             ]
+          },
+          "type": "ArrayElement",
+          "range": [
+            4,
+            5
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 4
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
           }
         },
         {
@@ -83,6 +113,21 @@
               14
             ],
             "value": "three"
+          },
+          "type": "ArrayElement",
+          "range": [
+            7,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
           }
         },
         {
@@ -104,6 +149,21 @@
               20
             ],
             "value": true
+          },
+          "type": "ArrayElement",
+          "range": [
+            16,
+            20
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 16
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
           }
         },
         {
@@ -124,6 +184,21 @@
               22,
               26
             ]
+          },
+          "type": "ArrayElement",
+          "range": [
+            22,
+            26
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 22
+            },
+            "end": {
+              "line": 1,
+              "column": 26
+            }
           }
         },
         {
@@ -151,6 +226,21 @@
                     29,
                     30
                   ]
+                },
+                "type": "ArrayElement",
+                "range": [
+                  29,
+                  30
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 29
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 30
+                  }
                 }
               },
               {
@@ -172,6 +262,21 @@
                     32,
                     33
                   ]
+                },
+                "type": "ArrayElement",
+                "range": [
+                  32,
+                  33
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 32
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 33
+                  }
                 }
               }
             ],
@@ -190,6 +295,21 @@
               34
             ],
             "trailingComma": false
+          },
+          "type": "ArrayElement",
+          "range": [
+            28,
+            34
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 28
+            },
+            "end": {
+              "line": 1,
+              "column": 34
+            }
           }
         }
       ],

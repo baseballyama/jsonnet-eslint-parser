@@ -229,3 +229,78 @@ describe("parseForESLint - raw AST shape", () => {
     expect(cond.branchFalse).toBeTruthy();
   });
 });
+
+describe("parseForESLint - wrapper node promotion (traversability)", () => {
+  /**
+   * Mirror ESLint's traverser: descend only through `visitorKeys`, and only
+   * into values that are themselves nodes (a string `type`). This is exactly
+   * how a rule would reach nodes, so it proves the visitors actually fire.
+   */
+  const collectTypes = (
+    ast: ReturnType<typeof parseForESLint>["ast"],
+    visitorKeys: Record<string, string[]>,
+  ): Map<string, number> => {
+    const counts = new Map<string, number>();
+    const visit = (node: unknown): void => {
+      if (!node || typeof node !== "object") return;
+      const type = (node as { type?: unknown }).type;
+      if (typeof type !== "string") return;
+      counts.set(type, (counts.get(type) ?? 0) + 1);
+      for (const key of visitorKeys[type] ?? []) {
+        const child = (node as Record<string, unknown>)[key];
+        if (Array.isArray(child)) {
+          for (const item of child) visit(item);
+        } else {
+          visit(child);
+        }
+      }
+    };
+    for (const node of ast.body) visit(node);
+    return counts;
+  };
+
+  it("gives object fields / local binds / array elements a traversable `type`", () => {
+    const { visitorKeys } = parseForESLint("local x = 1; { a: [1, 2] }");
+    expect(visitorKeys["Object"]).toContain("fields");
+    expect(visitorKeys["Local"]).toContain("binds");
+    expect(visitorKeys["Array"]).toContain("elements");
+    expect(visitorKeys["ObjectField"]).toContain("expr2");
+    expect(visitorKeys["LocalBind"]).toContain("body");
+    expect(visitorKeys["ArrayElement"]).toContain("expr");
+  });
+
+  it("reaches an Object nested inside a local bind via visitor-key traversal", () => {
+    // The container lives under `binds[0].body`. Before promotion ESLint's
+    // traverser bailed at the typeless LocalBind and never reached it.
+    const { ast, visitorKeys } = parseForESLint("local c = { a: 1 }; { x: c }");
+    const counts = collectTypes(ast, visitorKeys);
+    expect(counts.get("LocalBind")).toBe(1);
+    expect(counts.get("Object")).toBe(2);
+  });
+
+  it("reaches Objects nested inside an array via visitor-key traversal", () => {
+    const { ast, visitorKeys } = parseForESLint("[{ a: 1 }, { b: 2 }]");
+    const counts = collectTypes(ast, visitorKeys);
+    expect(counts.get("Array")).toBe(1);
+    expect(counts.get("ArrayElement")).toBe(2);
+    expect(counts.get("Object")).toBe(2);
+  });
+
+  it("reaches arguments of a function application", () => {
+    const { ast, visitorKeys } = parseForESLint("std.map(f, [{ a: 1 }])");
+    const counts = collectTypes(ast, visitorKeys);
+    expect(counts.get("ApplyArguments")).toBe(1);
+    expect(counts.get("PositionalArgument")).toBe(2);
+    expect(counts.get("Object")).toBe(1);
+  });
+
+  it("spans a promoted wrapper's range over its child nodes", () => {
+    const { ast } = parseForESLint("{ a: 1 }");
+    const obj = ast.body[0] as {
+      fields?: { type?: string; range?: [number, number] }[];
+    };
+    const field = obj.fields?.[0];
+    expect(field?.type).toBe("ObjectField");
+    expect(Array.isArray(field?.range)).toBe(true);
+  });
+});

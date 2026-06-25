@@ -35,9 +35,15 @@ const assertProgramShape = (program: Program, code: string): void => {
   expect(Array.isArray(program.comments)).toBe(true);
 
   for (const node of program.body as JsonnetNode[]) {
-    expect(node.range[0]).toBeGreaterThanOrEqual(0);
-    expect(node.range[1]).toBeLessThanOrEqual(code.length);
-    expect(node.range[0]).toBeLessThanOrEqual(node.range[1]);
+    // Top-level body nodes are always full expression nodes, so they always
+    // carry a range. (Some promoted wrapper nodes — e.g. a default-less
+    // `Parameter` — legitimately lack one, hence the union-level optionality.)
+    const range = node.range;
+    expect(range).toBeDefined();
+    if (!range) continue;
+    expect(range[0]).toBeGreaterThanOrEqual(0);
+    expect(range[1]).toBeLessThanOrEqual(code.length);
+    expect(range[0]).toBeLessThanOrEqual(range[1]);
     expect(node.parent).toBe(program);
   }
 

@@ -159,7 +159,22 @@
                       ]
                     }
                   },
-                  "ifFodder": []
+                  "ifFodder": [],
+                  "type": "IfSpec",
+                  "range": [
+                    45,
+                    50
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 43
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 48
+                    }
+                  }
                 }
               ],
               "expr": {
@@ -185,6 +200,21 @@
                         30,
                         31
                       ]
+                    },
+                    "type": "ArrayElement",
+                    "range": [
+                      30,
+                      31
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 29
+                      }
                     }
                   },
                   {
@@ -206,6 +236,21 @@
                         33,
                         34
                       ]
+                    },
+                    "type": "ArrayElement",
+                    "range": [
+                      33,
+                      34
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 31
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 32
+                      }
                     }
                   },
                   {
@@ -227,6 +272,21 @@
                         36,
                         37
                       ]
+                    },
+                    "type": "ArrayElement",
+                    "range": [
+                      36,
+                      37
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 34
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 35
+                      }
                     }
                   },
                   {
@@ -248,6 +308,21 @@
                         39,
                         40
                       ]
+                    },
+                    "type": "ArrayElement",
+                    "range": [
+                      39,
+                      40
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 37
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 38
+                      }
                     }
                   }
                 ],
@@ -271,7 +346,22 @@
               "inFodder": [],
               "outer": null,
               "varFodder": [],
-              "varName": "x"
+              "varName": "x",
+              "type": "ForSpec",
+              "range": [
+                29,
+                50
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 27
+                },
+                "end": {
+                  "line": 2,
+                  "column": 48
+                }
+              }
             },
             "trailingComma": false,
             "trailingCommaFodder": []
@@ -291,7 +381,22 @@
           "kind": 1,
           "method": null,
           "opFodder": [],
-          "superSugar": false
+          "superSugar": false,
+          "type": "ObjectField",
+          "range": [
+            13,
+            51
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 11
+            },
+            "end": {
+              "line": 2,
+              "column": 49
+            }
+          }
         },
         {
           "commaFodder": [],
@@ -383,7 +488,22 @@
                 "kind": 2,
                 "method": null,
                 "opFodder": [],
-                "superSugar": false
+                "superSugar": false,
+                "type": "ObjectField",
+                "range": [
+                  65,
+                  75
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 22
+                  }
+                }
               }
             ],
             "loc": {
@@ -425,6 +545,21 @@
                         106,
                         107
                       ]
+                    },
+                    "type": "ArrayElement",
+                    "range": [
+                      106,
+                      107
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 3,
+                        "column": 53
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 54
+                      }
                     }
                   },
                   {
@@ -446,6 +581,21 @@
                         109,
                         110
                       ]
+                    },
+                    "type": "ArrayElement",
+                    "range": [
+                      109,
+                      110
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 3,
+                        "column": 56
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 57
+                      }
                     }
                   }
                 ],
@@ -495,6 +645,21 @@
                           89
                         ],
                         "value": "a"
+                      },
+                      "type": "ArrayElement",
+                      "range": [
+                        86,
+                        89
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 3,
+                          "column": 33
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 36
+                        }
                       }
                     },
                     {
@@ -519,6 +684,21 @@
                           94
                         ],
                         "value": "b"
+                      },
+                      "type": "ArrayElement",
+                      "range": [
+                        91,
+                        94
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 3,
+                          "column": 38
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 41
+                        }
                       }
                     }
                   ],
@@ -542,10 +722,40 @@
                 "inFodder": [],
                 "outer": null,
                 "varFodder": [],
-                "varName": "k"
+                "varName": "k",
+                "type": "ForSpec",
+                "range": [
+                  85,
+                  95
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 32
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 42
+                  }
+                }
               },
               "varFodder": [],
-              "varName": "v"
+              "varName": "v",
+              "type": "ForSpec",
+              "range": [
+                85,
+                111
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 32
+                },
+                "end": {
+                  "line": 3,
+                  "column": 58
+                }
+              }
             },
             "trailingComma": false,
             "trailingCommaFodder": []
@@ -565,7 +775,22 @@
           "kind": 1,
           "method": null,
           "opFodder": [],
-          "superSugar": false
+          "superSugar": false,
+          "type": "ObjectField",
+          "range": [
+            62,
+            113
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 60
+            }
+          }
         }
       ],
       "loc": {
