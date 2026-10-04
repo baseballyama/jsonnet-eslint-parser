@@ -33,12 +33,11 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
-          version: pnpm update:version
-          publish: pnpm release
-          commit: "chore: release jsonnet-eslint-parser"
-          title: "chore: release jsonnet-eslint-parser"
+          version-script: pnpm update:version
+          publish-script: pnpm release
+          commit-message: "chore: release jsonnet-eslint-parser"
+          pr-title: "chore: release jsonnet-eslint-parser"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
