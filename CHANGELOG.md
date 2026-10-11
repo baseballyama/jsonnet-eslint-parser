@@ -1,5 +1,11 @@
 # jsonnet-eslint-parser
 
+## 0.2.1
+
+### Patch Changes
+
+- [#43](https://github.com/baseballyama/jsonnet-eslint-parser/pull/43) [`c8265b0`](https://github.com/baseballyama/jsonnet-eslint-parser/commit/c8265b08e0f49ffaaf5f678b4f90cb4125e44b24) Thanks [@baseballyama](https://github.com/baseballyama)! - Rebuild with the latest toolchain (TypeScript 7, rolldown 1.2.13). No changes to the parser output.
+
 ## 0.2.0
 
 ### Minor Changes
