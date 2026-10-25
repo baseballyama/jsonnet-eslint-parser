@@ -1,5 +1,11 @@
 # jsonnet-eslint-parser
 
+## 0.2.2
+
+### Patch Changes
+
+- [#53](https://github.com/baseballyama/jsonnet-eslint-parser/pull/53) [`2bfc2bb`](https://github.com/baseballyama/jsonnet-eslint-parser/commit/2bfc2bb3329744c83cd63af0bab8d689a1149750) Thanks [@baseballyama](https://github.com/baseballyama)! - Rebuild with the latest toolchain (rolldown 1.2.15, oxlint 1.89.0, knip 6.42.1, vitest 5.0.5, pnpm 12.15.0) and a refreshed lockfile.
+
 ## 0.2.1
 
 ### Patch Changes
